@@ -13,8 +13,7 @@ function  Dashboard(){
     return(
         <>
         <div>Dashboard</div>
-        <div>{userName}</div>
-      </>
+        </>
       
     );
 }
