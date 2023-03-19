@@ -2,8 +2,8 @@
 import { createBrowserRouter, RouterProvider,} from "react-router-dom";
 import { logoutAction } from "./actions/logout";
 import Main , {mainLoader} from "./layouts/Main";
-import Dashboard, { dashboardAction, dashboardLoader } from "./pages/dashboard";
-import Error from "./pages/error";
+import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
+import Error from "./pages/Error";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
   
