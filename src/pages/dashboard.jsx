@@ -14,12 +14,28 @@ export function dashboardLoader(){
 // action
 export async function dashboardAction({request}){
     const data = await request.formData();
-    const formData = Object.fromEntries(data);
-    try {
-        localStorage.setItem("userName" , JSON.stringify(formData.userName));
-        return toast.success(`Welcome , ${formData.userName}`);
-    } catch (e) {
+    const {_action , ...values} = Object.fromEntries(data);
+    console.log(values);
+    if(_action === "newUser")
+    {
+     try {
+         localStorage.setItem("userName" , JSON.stringify(values.userName));
+         return toast.success(`Welcome , ${values.userName}`);
+       } catch (e) {
         throw new Error("There was a problem creating your account");
+     }
+    }
+
+    if(_action === "createBudget")
+    {
+      try{
+        // create Budget
+        return toast.success("Budget Created !")
+      }
+      catch(e)
+      {
+        throw new Error("Thre was a error creating your budget")
+      }
     }
 } 
 
