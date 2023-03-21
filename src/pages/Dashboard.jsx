@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import AddBudgetForm from "../components/AddBudgetForm";
 import Intro from "../components/Intro";
-import { fetchData } from "../helpers";
+import { createBudget, fetchData } from "../helpers";
 
 // loader 
 export function dashboardLoader(){
@@ -29,7 +29,9 @@ export async function dashboardAction({request}){
     if(_action === "createBudget")
     {
       try{
-        // create Budget
+        createBudget( {
+          name : values.newBudget , 
+          amount : values.newBudgetAmount})
         return toast.success("Budget Created !") 
       }
       catch(e)
