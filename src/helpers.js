@@ -1,3 +1,7 @@
+// wait function
+export const waait = () => new Promise(res => 
+  setTimeout(res , Math.random()*2000))
+
 // random color generate
 function generaterandomColor(){
   const existingBudgetLength = fetchData("budgets")?.length ?? 0;
