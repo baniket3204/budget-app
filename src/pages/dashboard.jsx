@@ -30,7 +30,7 @@ export async function dashboardAction({request}){
     {
       try{
         // create Budget
-        return toast.success("Budget Created !")
+        return toast.success("Budget Created !") 
       }
       catch(e)
       {
