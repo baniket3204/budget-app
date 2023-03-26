@@ -1,6 +1,6 @@
 // wait function
 export const waait = () => new Promise(res => 
-  setTimeout(res , Math.random()*2000))
+  setTimeout(res , Math.random()*800))
 
 // random color generate
 function generaterandomColor(){
@@ -53,3 +53,40 @@ export const fetchData = (key) => {
     const existingExpenses = fetchData("expenses") ?? [] ;
     return localStorage.setItem("expenses" , JSON.stringify([...existingExpenses , newItem]))
   }
+
+
+  // total spent by budget
+  export const calculateSpentByBudget = (budgetId) => {
+  const expenses = fetchData("expenses") ?? [];
+  const budgetSpent = expenses.reduce((acc, expense) => {
+    // check if expense.id === budgetId I passed in
+    if (expense.budgetId !== budgetId) return acc
+
+    // add the current amount to my total
+    return acc += expense.amount
+  }, 0)
+  return budgetSpent;
+}
+
+  // FORMATTING
+
+// Formating percentages
+export const formatPercentage = (amt) => {
+  return amt.toLocaleString(undefined, {
+    style: "percent",
+    minimumFractionDigits: 0,
+  })
+}
+
+// Format currency
+export const formatCurrency = (amt) => {
+  return amt.toLocaleString(undefined, {
+    style: "currency",
+    currency: "INR"
+  })
+}
+
+// format date
+
+export const formatDateToLocaleString = (epoch) =>
+  new Date(epoch).toLocaleDateString();
