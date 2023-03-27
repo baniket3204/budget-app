@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import AddBudgetForm from "../components/AddBudgetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
 import Intro from "../components/Intro";
-import { createBudget, createExpense, fetchData, waait } from "../helpers";
+import { createBudget, createExpense, deleteItem, fetchData, waait } from "../helpers";
 import BudgetItem from "../components/BudgetItem";
 import Table from "../components/Table";
 
@@ -18,9 +18,10 @@ export function dashboardLoader(){
 // action
 export async function dashboardAction({request}){
     await waait();
+
     const data = await request.formData();
     const {_action , ...values} = Object.fromEntries(data);
-    console.log(values);
+   
     if(_action === "newUser")
     {
      try {
@@ -59,6 +60,21 @@ export async function dashboardAction({request}){
       catch(e)
       {
         throw new Error("Thre was a error creating your expense")
+      }
+    }
+
+    if(_action === "deleteExpense")
+    {
+      try{   
+        deleteItem({
+          key : "expenses" ,
+          id : values.expenseId ,
+        }) ;
+        return toast.success("Expense Deleted !") ;
+      }
+      catch(e)
+      {
+        throw new Error("Thre was a error deleting your expense");
       }
     }
 } 
