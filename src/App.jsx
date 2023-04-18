@@ -7,7 +7,7 @@ import Error from "./pages/Error";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ExpensesPage, { expensesAction, expensesLoader } from "./pages/ExpensesPages";
-import BudgetPage from "./pages/BudgetPage";
+import BudgetPage, { budgetAction, budgetLoader } from "./pages/BudgetPage";
   
 
 const router = createBrowserRouter([
@@ -34,7 +34,8 @@ const router = createBrowserRouter([
       {
         path : "budget/:id",
         element:<BudgetPage />,
-        loader : expensesLoader ,
+        loader : budgetLoader ,
+        action : budgetAction ,
         errorElement : <Error /> 
       },
       {

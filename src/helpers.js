@@ -31,7 +31,7 @@ export const fetchData = (key) => {
     category , key ,value}) =>{
       const data = fetchData(category) ?? [];
       return data.filter((item) => item[key] === value);
-    }
+    };
 
 
   // create budget

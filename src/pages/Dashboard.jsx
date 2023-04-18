@@ -59,7 +59,7 @@ export async function dashboardAction({request}){
       }
       catch(e)
       {
-        throw new Error("Thre was a error creating your expense")
+        throw new Error("There was a error creating your expense")
       }
     }
 
